@@ -11,14 +11,14 @@ namespace Application.Services
     /// </summary>
     public class AppConfigurationServices : IAppConfiguration
     {
-        public IConfigurationRepository ConfigurationRepository { get; set; }
+        public IConfigurationRepository ConnectionStringsRepository { get; set; }
 
-        public IConfigurationRepository ApplicationKeysRepository { get; set; }
+        public IConfigurationRepository AppKeysRepository { get; set; }
 
         public AppConfigurationServices(IConfigurationRepositoryJsonConfiguration configurationRepository, IConfigurationRepositoryJsonAppKeys applicationKeysRepository)
         {
-            ConfigurationRepository = configurationRepository;
-            ApplicationKeysRepository = applicationKeysRepository;
+            ConnectionStringsRepository = configurationRepository;
+            AppKeysRepository = applicationKeysRepository;
         }
     }
 }

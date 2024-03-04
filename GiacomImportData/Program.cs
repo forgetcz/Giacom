@@ -1,10 +1,23 @@
+using Application.Composition;
+using Application.Interfaces;
+using Application.Services;
 using GiacomImportData;
+using GiacomImportData.Application.Composition;
 
-IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
+internal class Program
+{
+    private static async Task Main(string[] args)
     {
-        services.AddHostedService<Worker>();
-    })
-    .Build();
+        IHost host = Host.CreateDefaultBuilder(args)
+        .ConfigureServices(services =>
+        {
+            services.AddApplicationServices();
+            services.AddImportDataServices();
+            services.AddHostedService<Worker>();
 
-await host.RunAsync();
+        })
+        .Build();
+
+        await host.RunAsync();
+    }
+}

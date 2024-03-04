@@ -30,9 +30,9 @@ namespace Infrastructure.Configuration.JSON
         public JsonlWebConfig()
         {
             var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
-            var appSettings = configuration.GetSection("connectionStrings");
+            var connectionStrings = configuration.GetSection("connectionStrings");
 
-            foreach (var item in appSettings.GetChildren())
+            foreach (var item in connectionStrings.GetChildren())
             {
                 if (item?.Value?.GetType() ==  typeof(string))
                 {

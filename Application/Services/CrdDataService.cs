@@ -17,7 +17,7 @@ namespace Application.Services
 
         public IBaseDbRepository<CrdData, long> GetCrdDataRepository()
         {
-            var mainConnectionString = _appConfiguration.ConfigurationRepository.GetKeyValue(nameof(eSqlConnectionStrings.mainConn));
+            var mainConnectionString = _appConfiguration.ConnectionStringsRepository.GetKeyValue(nameof(eSqlConnectionStrings.mainConn));
             _crdRepositories.setConnectionString(mainConnectionString);
 
             return _crdRepositories;
