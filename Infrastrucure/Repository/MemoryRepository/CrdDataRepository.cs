@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Infrastructure.Bussines;
+using Infrastructure.Business;
 
 namespace Infrastructure.Data.MemoryRepository
 {
