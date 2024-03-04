@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace Application.Services
 {
     /// <summary>
-    /// Compose Data repository 
+    /// Compose Data repository at this moment CrdData service
     /// </summary>
     /// 
     public class CrdDataService : IDataService

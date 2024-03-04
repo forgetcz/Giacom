@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace GiacomImportData.Business
 {
+    /// <summary>
+    /// Csv parser for input file
+    /// </summary>
     internal class CsvParser
     {
         public static async Task Parse(string path)

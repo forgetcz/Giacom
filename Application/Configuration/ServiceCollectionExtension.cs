@@ -10,6 +10,11 @@ namespace Application.Configuration
 {
     public static class IServiceCollectionExtension
     {
+        /// <summary>
+        /// Initial DI for this project
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddSingleton<IAppConfiguration, AppConfigurationServices>();

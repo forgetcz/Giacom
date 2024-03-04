@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
+    /// <summary>
+    /// Crd data table
+    /// </summary>
     public class CrdData : BaseEntity<long>
     {
         public string caller_id { get; set; }
