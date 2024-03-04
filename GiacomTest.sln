@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34607.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiacomApi", "GiacomTest\GiacomApi.csproj", "{E33FC5EF-D93B-4A2B-B5CC-DFA36EE068CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{46722C75-783E-401C-8D2A-6EEBCFD139A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastrucure", "Infrastrucure\Infrastrucure.csproj", "{F4C2B673-5A2E-48F9-8378-E0584E3D3818}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{60789714-0765-44A3-9979-8DA34122F49D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D0854754-CC00-439A-95DD-C0FE19F6D529}"
+	ProjectSection(SolutionItems) = preProject
+		GiacomTest\giacom - Developer Technical Test.docx = GiacomTest\giacom - Developer Technical Test.docx
+		GiacomTest\Read.me = GiacomTest\Read.me
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E40C462D-1783-43AA-AB54-F0B43950DCD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8784E587-F601-4D80-95AE-813D837666F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Test", "Application.Test\Application.Test.csproj", "{6BB9B0E3-CA82-4BB3-A0D7-FD1F7045DEA8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Test", "Domain.Test\Domain.Test.csproj", "{0565FE8C-F725-448E-B921-C1F4946E3BAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastrucure.Test", "Infrastrucure.Test\Infrastrucure.Test.csproj", "{58CAACE0-D0BC-46C9-A5CD-D2B2EDDB1974}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiacomImportData", "GiacomImportData\GiacomImportData.csproj", "{EA5EEF4E-8A91-4B90-8724-FCC594EED572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiacomApi.Test", "GiacomApi.Test\GiacomApi.Test.csproj", "{6795F2D3-4260-47E4-A97C-46017FE7E56B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E33FC5EF-D93B-4A2B-B5CC-DFA36EE068CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E33FC5EF-D93B-4A2B-B5CC-DFA36EE068CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E33FC5EF-D93B-4A2B-B5CC-DFA36EE068CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E33FC5EF-D93B-4A2B-B5CC-DFA36EE068CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46722C75-783E-401C-8D2A-6EEBCFD139A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46722C75-783E-401C-8D2A-6EEBCFD139A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46722C75-783E-401C-8D2A-6EEBCFD139A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46722C75-783E-401C-8D2A-6EEBCFD139A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C2B673-5A2E-48F9-8378-E0584E3D3818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C2B673-5A2E-48F9-8378-E0584E3D3818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C2B673-5A2E-48F9-8378-E0584E3D3818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C2B673-5A2E-48F9-8378-E0584E3D3818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60789714-0765-44A3-9979-8DA34122F49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60789714-0765-44A3-9979-8DA34122F49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60789714-0765-44A3-9979-8DA34122F49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60789714-0765-44A3-9979-8DA34122F49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB9B0E3-CA82-4BB3-A0D7-FD1F7045DEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB9B0E3-CA82-4BB3-A0D7-FD1F7045DEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB9B0E3-CA82-4BB3-A0D7-FD1F7045DEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB9B0E3-CA82-4BB3-A0D7-FD1F7045DEA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0565FE8C-F725-448E-B921-C1F4946E3BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0565FE8C-F725-448E-B921-C1F4946E3BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0565FE8C-F725-448E-B921-C1F4946E3BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0565FE8C-F725-448E-B921-C1F4946E3BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58CAACE0-D0BC-46C9-A5CD-D2B2EDDB1974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CAACE0-D0BC-46C9-A5CD-D2B2EDDB1974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CAACE0-D0BC-46C9-A5CD-D2B2EDDB1974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CAACE0-D0BC-46C9-A5CD-D2B2EDDB1974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5EEF4E-8A91-4B90-8724-FCC594EED572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5EEF4E-8A91-4B90-8724-FCC594EED572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5EEF4E-8A91-4B90-8724-FCC594EED572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5EEF4E-8A91-4B90-8724-FCC594EED572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6795F2D3-4260-47E4-A97C-46017FE7E56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6795F2D3-4260-47E4-A97C-46017FE7E56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6795F2D3-4260-47E4-A97C-46017FE7E56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6795F2D3-4260-47E4-A97C-46017FE7E56B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E33FC5EF-D93B-4A2B-B5CC-DFA36EE068CC} = {E40C462D-1783-43AA-AB54-F0B43950DCD1}
+		{46722C75-783E-401C-8D2A-6EEBCFD139A4} = {E40C462D-1783-43AA-AB54-F0B43950DCD1}
+		{F4C2B673-5A2E-48F9-8378-E0584E3D3818} = {E40C462D-1783-43AA-AB54-F0B43950DCD1}
+		{60789714-0765-44A3-9979-8DA34122F49D} = {E40C462D-1783-43AA-AB54-F0B43950DCD1}
+		{6BB9B0E3-CA82-4BB3-A0D7-FD1F7045DEA8} = {8784E587-F601-4D80-95AE-813D837666F3}
+		{0565FE8C-F725-448E-B921-C1F4946E3BAC} = {8784E587-F601-4D80-95AE-813D837666F3}
+		{58CAACE0-D0BC-46C9-A5CD-D2B2EDDB1974} = {8784E587-F601-4D80-95AE-813D837666F3}
+		{EA5EEF4E-8A91-4B90-8724-FCC594EED572} = {E40C462D-1783-43AA-AB54-F0B43950DCD1}
+		{6795F2D3-4260-47E4-A97C-46017FE7E56B} = {8784E587-F601-4D80-95AE-813D837666F3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {059BB4B6-9EFD-4963-8DDB-51E4BC6F1261}
+	EndGlobalSection
+EndGlobal
