@@ -11,7 +11,7 @@ namespace Application.Configuration
     public static class IServiceCollectionExtension
     {
         /// <summary>
-        /// Initial DI for this project
+        /// Initial DI for Application part
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>

@@ -12,6 +12,11 @@ namespace GiacomTest
 {
     public static class IServiceCollectionExtension
     {
+        /// <summary>
+        /// Initial DI for Giacom API
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddApiServices(this IServiceCollection services)
         {
             services.AddTransient<IDataService, CrdDataService>();
