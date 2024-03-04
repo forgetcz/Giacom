@@ -8,6 +8,10 @@ using System.Globalization;
 
 namespace GiacomImportData.Application.Services
 {
+
+    /// <summary>
+    /// Data import managed
+    /// </summary>
     internal class DataImportService : IDataImport
     {
         private readonly IAppConfiguration _appConfiguration;
@@ -20,7 +24,7 @@ namespace GiacomImportData.Application.Services
         }
 
         /// <summary>
-        /// Parse CSV File
+        /// Parse CSV File and send it to repository
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>

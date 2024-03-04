@@ -11,7 +11,7 @@ namespace GiacomImportData.Application.Composition
     public static class ServiceCollectionExtension
     {
         /// <summary>
-        /// Initial DI for Application part
+        /// Initial DI for Import data part, do not forget composition for other part as well !
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
