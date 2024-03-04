@@ -1,9 +1,5 @@
-﻿using Infrastructure.Enums;
-using Infrastructure.Interfaces;
+﻿using Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
 
 namespace Infrastructure.Configuration.JSON
 {
@@ -36,11 +32,13 @@ namespace Infrastructure.Configuration.JSON
             var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
             var appSettings = configuration.GetSection("appSettings");
 
-            string? myPrivateSettings1 = appSettings.GetSection(nameof(eApplicationKeys.myPrivateSettings1)).Value;
-            string? myPrivateSettings2 = appSettings.GetSection(nameof(eApplicationKeys.myPrivateSettings2)).Value;
-
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings1), myPrivateSettings1 ?? "");
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings2), myPrivateSettings2 ?? "");
+            foreach (var item in appSettings.GetChildren())
+            {
+                if (item?.Value?.GetType() == typeof(string))
+                {
+                    keysValues.Add(item.Key, item.Value);
+                }
+            }
         }
     }
 }

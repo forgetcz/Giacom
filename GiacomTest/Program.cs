@@ -1,4 +1,4 @@
-using Application.Configuration;
+using Application.Composition;
 using GiacomTest;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,5 +1,4 @@
-﻿using Infrastructure.Enums;
-using Infrastructure.Interfaces;
+﻿using Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Configuration.JSON
@@ -33,9 +32,13 @@ namespace Infrastructure.Configuration.JSON
             var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
             var appSettings = configuration.GetSection("connectionStrings");
 
-            string? mainConn = appSettings.GetSection(nameof(eSqlConnectionStrings.mainConn)).Value;
-
-            keysValues.Add(nameof(eSqlConnectionStrings.mainConn), mainConn ?? "");
+            foreach (var item in appSettings.GetChildren())
+            {
+                if (item?.Value?.GetType() ==  typeof(string))
+                {
+                    keysValues.Add(item.Key, item.Value);
+                }
+            }
         }
     }
 }

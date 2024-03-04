@@ -6,7 +6,7 @@ using Infrastructure.Data.MemoryRepository;
 using Infrastructure.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application.Configuration
+namespace Application.Composition
 {
     public static class IServiceCollectionExtension
     {
