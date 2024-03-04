@@ -7,7 +7,6 @@ namespace Infrastructure.Configuration.JSON
     /// <summary>
     /// Configuration keys from config
     /// </summary>
-    /// 
     public class JsonlWebConfig : IConfigurationRepositoryJsonConfiguration
     {
         /// <summary>
@@ -34,9 +33,9 @@ namespace Infrastructure.Configuration.JSON
             var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
             var appSettings = configuration.GetSection("connectionStrings");
 
-            string mainConn = appSettings.GetSection(nameof(eSqlConnectionStrings.mainConn)).Value;
+            string? mainConn = appSettings.GetSection(nameof(eSqlConnectionStrings.mainConn)).Value;
 
-            keysValues.Add(nameof(eSqlConnectionStrings.mainConn), mainConn);
+            keysValues.Add(nameof(eSqlConnectionStrings.mainConn), mainConn ?? "");
         }
     }
 }

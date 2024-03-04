@@ -36,11 +36,11 @@ namespace Infrastructure.Configuration.JSON
             var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
             var appSettings = configuration.GetSection("appSettings");
 
-            string myPrivateSettings1 = appSettings.GetSection(nameof(eApplicationKeys.myPrivateSettings1)).Value;
-            string myPrivateSettings2 = appSettings.GetSection(nameof(eApplicationKeys.myPrivateSettings2)).Value;
+            string? myPrivateSettings1 = appSettings.GetSection(nameof(eApplicationKeys.myPrivateSettings1)).Value;
+            string? myPrivateSettings2 = appSettings.GetSection(nameof(eApplicationKeys.myPrivateSettings2)).Value;
 
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings1), myPrivateSettings1);
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings2), myPrivateSettings2);
+            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings1), myPrivateSettings1 ?? "");
+            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings2), myPrivateSettings2 ?? "");
         }
     }
 }

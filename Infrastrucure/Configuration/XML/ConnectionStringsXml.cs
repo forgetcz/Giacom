@@ -8,8 +8,6 @@ namespace Infrastructure.Configuration.XML
     /// <summary>
     /// Configuration keys from config
     /// </summary>
-    /// 
-    ///[ConfigurationRepositoryExportAttributes(eApplicationConfigurationRepositoryType.XML, eApplicationConfigurationRepositorySection.ConnectionStrings)]
     public class XmlWebConfig : IConfigurationRepository
     {
         /// <summary>
@@ -33,11 +31,11 @@ namespace Infrastructure.Configuration.XML
         /// <returns></returns>
         public void LoadApplicationSection() 
         {
-            /*string mainConn = ConfigurationManager.ConnectionStrings[nameof(eSqlConnectionStrings.mainConn)].ConnectionString;
-            string secondConn = ConfigurationManager.ConnectionStrings[nameof(eSqlConnectionStrings.secondConn)].ConnectionString;
+            string? mainConn = ConfigurationManager.ConnectionStrings[nameof(eSqlConnectionStrings.mainConn)].ConnectionString;
+            string? secondConn = ConfigurationManager.ConnectionStrings[nameof(eSqlConnectionStrings.secondConn)].ConnectionString;
 
-            keysValues.Add(nameof(eSqlConnectionStrings.mainConn), mainConn);
-            keysValues.Add(nameof(eSqlConnectionStrings.secondConn), secondConn);*/
+            keysValues.Add(nameof(eSqlConnectionStrings.mainConn), mainConn ?? "");
+            keysValues.Add(nameof(eSqlConnectionStrings.secondConn), secondConn ?? "");
         }
     }
 }

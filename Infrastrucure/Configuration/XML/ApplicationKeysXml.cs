@@ -8,7 +8,6 @@ namespace Infrastructure.Configuration.XML
     /// <summary>
     /// Application Keys from config
     /// </summary>
-    //[ConfigurationRepositoryExportAttributes(eApplicationConfigurationRepositoryType.XML, eApplicationConfigurationRepositorySection.AppKeys)]
     public class ApplicationKeysXml : IConfigurationRepository
     {
         /// <summary>
@@ -32,11 +31,11 @@ namespace Infrastructure.Configuration.XML
         /// <returns></returns>
         public void LoadApplicationSection()
         {
-            /*string myPrivateSettings1 = ConfigurationManager.AppSettings[nameof(eApplicationKeys.myPrivateSettings1)];
-            string myPrivateSettings2 = ConfigurationManager.AppSettings[nameof(eApplicationKeys.myPrivateSettings2)];
+            string? myPrivateSettings1 = ConfigurationManager.AppSettings[nameof(eApplicationKeys.myPrivateSettings1)];
+            string? myPrivateSettings2 = ConfigurationManager.AppSettings[nameof(eApplicationKeys.myPrivateSettings2)];
 
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings1), myPrivateSettings1);
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings2), myPrivateSettings2);*/
+            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings1), myPrivateSettings1 ?? "");
+            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings2), myPrivateSettings2 ?? "");
         }
     }
 }
