@@ -1,18 +1,18 @@
 ﻿using Application.Interfaces;
+using ApplicationApplication.Interfaces;
 using Domain.Entities;
 using Infrastructure.Interfaces;
-using Microsoft.Extensions.Hosting;
 using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
 using System.Globalization;
 
-namespace GiacomImportData.Application.Services
+namespace Application.Services
 {
 
     /// <summary>
     /// Data import managed
     /// </summary>
-    internal class DataImportService : IDataImport
+    public class DataImportService : IDataImport
     {
         private readonly IAppConfiguration _appConfiguration;
         private readonly IBaseDbRepository<CrdData, long> _crdRepositories;

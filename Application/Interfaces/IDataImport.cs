@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GiacomImportData.Application.Services
+namespace ApplicationApplication.Interfaces
 {
     /// <summary>
     /// Import data managed for file

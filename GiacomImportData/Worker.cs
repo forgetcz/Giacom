@@ -1,5 +1,5 @@
 using Application.Interfaces;
-using GiacomImportData.Application.Services;
+using ApplicationApplication.Interfaces;
 
 namespace GiacomImportData
 {
