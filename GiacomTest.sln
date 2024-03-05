@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiacomApi", "GiacomTest\Gia
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{46722C75-783E-401C-8D2A-6EEBCFD139A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastrucure", "Infrastrucure\Infrastrucure.csproj", "{F4C2B673-5A2E-48F9-8378-E0584E3D3818}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastrucure\Infrastructure.csproj", "{F4C2B673-5A2E-48F9-8378-E0584E3D3818}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{60789714-0765-44A3-9979-8DA34122F49D}"
 EndProject
@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastrucure.Test", "Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiacomImportData", "GiacomImportData\GiacomImportData.csproj", "{EA5EEF4E-8A91-4B90-8724-FCC594EED572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiacomApi.Test", "GiacomApi.Test\GiacomApi.Test.csproj", "{6795F2D3-4260-47E4-A97C-46017FE7E56B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiacomApi.Test", "GiacomApi.Test\GiacomApi.Test.csproj", "{6795F2D3-4260-47E4-A97C-46017FE7E56B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

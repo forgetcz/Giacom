@@ -1,4 +1,4 @@
-namespace Infrastrucure.Test
+namespace Infrastructure.Test
 {
     [TestClass]
     public class UnitTest1

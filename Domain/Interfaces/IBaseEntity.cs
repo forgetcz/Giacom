@@ -9,7 +9,7 @@ namespace Domain.Interfaces
     /// <summary>
     /// Base definition for each Entity from database
     /// </summary>
-    interface IBaseEntity<T>
+    public interface IBaseEntity<T>
     {
         T Id { get; set; }
     }
