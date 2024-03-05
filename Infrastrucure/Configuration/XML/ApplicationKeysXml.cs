@@ -1,6 +1,4 @@
-﻿using Infrastructure.Enums;
-using Infrastructure.Interfaces;
-using System.Collections.Generic;
+﻿using Infrastructure.Interfaces;
 using System.Configuration;
 
 namespace Infrastructure.Configuration.XML
@@ -13,7 +11,7 @@ namespace Infrastructure.Configuration.XML
         /// <summary>
         /// Memory storage for connection strings
         /// </summary>
-        private SortedList<string, string> keysValues = new SortedList<string, string>();
+        private readonly SortedList<string, string> keysValues = new();
 
         /// <summary>
         /// Get requested connection string form storage
@@ -29,13 +27,21 @@ namespace Infrastructure.Configuration.XML
         /// Read all connection strings from web-config by XML configuration
         /// </summary>
         /// <returns></returns>
-        public void LoadApplicationSection()
+        public ApplicationKeysXml()
         {
-            string? myPrivateSettings1 = ConfigurationManager.AppSettings[nameof(eApplicationKeys.myPrivateSettings1)];
-            string? myPrivateSettings2 = ConfigurationManager.AppSettings[nameof(eApplicationKeys.myPrivateSettings2)];
-
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings1), myPrivateSettings1 ?? "");
-            keysValues.Add(nameof(eApplicationKeys.myPrivateSettings2), myPrivateSettings2 ?? "");
+            var keys = ConfigurationManager.AppSettings.AllKeys;
+            
+            if (keys != null)
+            {
+                foreach (var key in keys)
+                {
+                    if (key != null)
+                    {
+                        string? value = ConfigurationManager.AppSettings[key];
+                        keysValues.Add(key, value ?? "");
+                    }
+                }
+            }
         }
     }
 }

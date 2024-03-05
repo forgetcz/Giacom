@@ -24,7 +24,7 @@ namespace Infrastructure.Configuration.JSON
         }
 
         /// <summary>
-        /// Read all connection strings from appsettings.json by XML configuration
+        /// Read all application strings from appsettings.json by JSON configuration
         /// </summary>
         /// <returns></returns>
         public ApplicationKeysJson()

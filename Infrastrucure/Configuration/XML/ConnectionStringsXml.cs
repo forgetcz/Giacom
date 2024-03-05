@@ -1,6 +1,4 @@
-﻿using Infrastructure.Enums;
-using Infrastructure.Interfaces;
-using System.Collections.Generic;
+﻿using Infrastructure.Interfaces;
 using System.Configuration;
 
 namespace Infrastructure.Configuration.XML
@@ -13,7 +11,7 @@ namespace Infrastructure.Configuration.XML
         /// <summary>
         /// Memory storage for connection strings
         /// </summary>
-        private SortedList<string, string> keysValues = new SortedList<string, string>();
+        private readonly SortedList<string, string> keysValues = new();
 
         /// <summary>
         /// Get requested connection string form storage
@@ -29,13 +27,24 @@ namespace Infrastructure.Configuration.XML
         /// Read all connection strings from web-config by XML configuration
         /// </summary>
         /// <returns></returns>
-        public void LoadApplicationSection() 
+        public XmlWebConfig() 
         {
-            string? mainConn = ConfigurationManager.ConnectionStrings[nameof(eSqlConnectionStrings.mainConn)].ConnectionString;
-            string? secondConn = ConfigurationManager.ConnectionStrings[nameof(eSqlConnectionStrings.secondConn)].ConnectionString;
+            var connectionStrings = ConfigurationManager.ConnectionStrings;
 
-            keysValues.Add(nameof(eSqlConnectionStrings.mainConn), mainConn ?? "");
-            keysValues.Add(nameof(eSqlConnectionStrings.secondConn), secondConn ?? "");
+            if (connectionStrings != null)
+            {
+                foreach (var connectionString in connectionStrings)
+                {
+                    if ((connectionString != null) && (connectionString is ConnectionStringSettings))
+                    {
+                        var connectionStringValue = connectionString as ConnectionStringSettings;
+                        if (connectionStringValue != null)
+                        {
+                            keysValues.Add(connectionStringValue.Name, connectionStringValue.ConnectionString);
+                        }
+                    }
+                }
+            }
         }
     }
 }

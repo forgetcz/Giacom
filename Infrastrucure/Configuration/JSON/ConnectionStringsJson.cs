@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 namespace Infrastructure.Configuration.JSON
 {
     /// <summary>
-    /// Configuration keys from config
+    /// ConnectionStrings keys from config
     /// </summary>
     public class JsonlWebConfig : IConfigurationRepositoryJsonConfiguration
     {
@@ -24,7 +24,7 @@ namespace Infrastructure.Configuration.JSON
         }
 
         /// <summary>
-        /// Read all connection strings from appsettings.json by configuration
+        /// Read all connection strings from appsettings.json by JSON configuration
         /// </summary>
         /// <returns></returns>
         public JsonlWebConfig()
