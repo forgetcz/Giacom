@@ -11,7 +11,7 @@ namespace Infrastructure.Configuration.JSON
         /// <summary>
         /// Memory storage for connection strings
         /// </summary>
-        private readonly SortedList<string, string> keysValues = new SortedList<string, string>();
+        private readonly SortedList<string, string> keysValues = new();
 
         /// <summary>
         /// Get requested connection string form storage
