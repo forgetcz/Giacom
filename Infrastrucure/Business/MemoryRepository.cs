@@ -1,4 +1,4 @@
-﻿using Domain.Abstraction;
+﻿using Domain.Interfaces;
 using Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,14 +15,14 @@ namespace Infrastructure.Business
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="K"></typeparam>
     public class MemoryRepository<T, K> : IBaseDbRepository<T, K>
-        where T : BaseEntity<K>
+        where T : IBaseEntity<K>
         where K : struct,
           IComparable,
           IComparable<K>,
           IEquatable<K>,
           IFormattable
     {
-        private readonly SortedList<K, T> storage = new SortedList<K, T>();
+        private readonly SortedList<K, T> storage = new();
 
         public Task<K> Delete(K entity)
         {

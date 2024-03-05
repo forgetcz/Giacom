@@ -1,4 +1,5 @@
 ﻿using Domain.Abstraction;
+using Domain.Interfaces;
 
 namespace Infrastructure.Interfaces
 {
@@ -7,7 +8,7 @@ namespace Infrastructure.Interfaces
     /// </summary>
     /// <typeparam name="T">Type of entity</typeparam>
     /// <typeparam name="K">Type of key in database</typeparam>
-    public interface IBaseDbRepository<T, K> where T : BaseEntity<K>
+    public interface IBaseDbRepository<T, K> where T : IBaseEntity<K>
     {
         void setConnectionString(string connectionString);
 
