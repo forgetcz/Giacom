@@ -22,8 +22,10 @@ namespace Infrastructure.Data.SqlRepository
                 CrdData crdData;
                 while (reader.Read())
                 {
-                    crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
-                        , reader.GetDateTime(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7), reader.GetString(8));
+                    /*crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
+                        , reader.GetDateTime(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetInt32(6)
+                        , reader.GetString(7), reader.GetString(8));
+                    */
                 }
                 return entity;
             }
