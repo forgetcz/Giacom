@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Enums
+namespace Application.Enums
 {
     /// <summary>
-    /// All Keys from application keys settings
+    /// Enum defined names fpr sql connection strings
     /// </summary>
-    public enum eApplicationKeys
-    {
-        myPrivateSettings1, myPrivateSettings2
+    public enum eSqlConnectionStrings
+    { 
+        mainConn, secondConn
     }
 }

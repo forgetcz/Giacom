@@ -1,8 +1,5 @@
 ﻿using Application.Interfaces;
-using Infrastructure.Enums;
 using Infrastructure.Interfaces;
-using Microsoft.Extensions.Configuration;
-using System.Diagnostics;
 
 namespace Application.Services
 {

@@ -1,8 +1,7 @@
-﻿using Application.Interfaces;
+﻿using Application.Enums;
+using Application.Interfaces;
 using Domain.Entities;
-using Infrastructure.Enums;
 using Infrastructure.Interfaces;
-using System.Diagnostics;
 
 namespace Application.Services
 {
