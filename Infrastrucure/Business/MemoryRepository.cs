@@ -10,7 +10,7 @@ namespace Infrastructure.Business
 {
 
     /// <summary>
-    /// Memory repository, don't us IConvertible as GUID can't be used as 'K'
+    /// Memory repository, don't use IConvertible as GUID can't be used as 'K'
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="K"></typeparam>
