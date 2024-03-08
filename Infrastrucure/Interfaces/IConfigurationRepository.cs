@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Infrastructure.Interfaces
 {
     /// <summary>
-    /// Repository definition for Configuration (LoadApplicationSection,GetKeyValue)
+    /// Repository definition for Configuration (GetKeyValue)
     /// </summary>
     public interface IConfigurationRepository
     {

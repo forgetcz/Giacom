@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Interfaces;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace Infrastructure.Configuration.XML
 {
@@ -30,7 +31,7 @@ namespace Infrastructure.Configuration.XML
         public ApplicationKeysXml()
         {
             var keys = ConfigurationManager.AppSettings.AllKeys;
-            
+
             if (keys != null)
             {
                 foreach (var key in keys)

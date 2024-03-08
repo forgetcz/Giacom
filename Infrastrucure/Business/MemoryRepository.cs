@@ -63,12 +63,12 @@ namespace Infrastructure.Business
             return Task.FromResult(storage.Values.AsEnumerable());
         }
 
-        public Task<T> GetById(K id)
+        public Task<T?> GetById(K id)
         {
             if (storage.ContainsKey(id))
             {
                 var entity = storage[id];
-                return Task.FromResult(entity);
+                return Task.FromResult<T?>(entity);
             }
             return Task.FromResult(default(T));
         }
@@ -93,8 +93,26 @@ namespace Infrastructure.Business
             return result;
         }
 
-        public void setConnectionString(string connectionString)
+        public Task<IEnumerable<T>> TakeRange(int skip, int count)
         {
+            var items = storage.Skip(skip).Take(count).ToList();
+            var result = new List<T>();
+            items.ForEach(f => result.Add(f.Value));
+            return Task.FromResult(result.AsEnumerable());
+        }
+
+        public Task Delete(T entity)
+        {
+            storage.Remove(entity.Id);
+            return Task.FromResult(entity);
+        }
+
+        public async Task DeleteMany(IEnumerable<T> entities)
+        {
+            foreach (var entity in entities)
+            {
+                await Delete(entity);
+            }
         }
     }
 }

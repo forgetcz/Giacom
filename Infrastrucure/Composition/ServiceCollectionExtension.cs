@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Domain.Entities;
+using Infrastructure.Business;
+using Infrastructure.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Composition
 {
@@ -11,7 +14,7 @@ namespace Infrastructure.Composition
         /// <returns></returns>
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            
+            //services.AddSingleton<IMongoConnectionSettings, MongoConnectionSettings>();
             return services;
         }
     }
