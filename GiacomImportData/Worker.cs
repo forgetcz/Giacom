@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using ApplicationApplication.Interfaces;
 
 namespace GiacomImportData
@@ -10,13 +9,13 @@ namespace GiacomImportData
     {
         private readonly ILogger<Worker> _logger;
         private readonly IDataImport _dataImportService;
-        private readonly IAppConfiguration _appConfiguration;
+        private readonly IConfiguration? _appConfig;
 
-        public Worker(ILogger<Worker> logger, IDataImport dataImportService, IAppConfiguration appConfiguration)
+        public Worker(ILogger<Worker> logger, IDataImport dataImportService, IConfiguration? appConfig)
         {
             _logger = logger;
             _dataImportService = dataImportService;
-            _appConfiguration = appConfiguration;
+            _appConfig = appConfig;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -25,8 +24,8 @@ namespace GiacomImportData
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
 
-                var filePath = _appConfiguration.AppKeysRepository.GetKeyValue("filePath");
-                await _dataImportService.ImportData(filePath);
+                var filePath = _appConfig!.GetSection("appSettings:filePath").Value;
+                await _dataImportService.ImportData(filePath!);
                 await Task.Delay(1000, stoppingToken);
             }
         }

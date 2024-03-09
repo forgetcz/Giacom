@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 namespace Domain.Interfaces
 {
     /// <summary>
-    /// Base definition for each Entity from database
+    /// Base definition for each Entity from database (only Id must by defined be any type)
     /// </summary>
-    public interface IBaseEntity<T>
+    public interface IBaseEntity<T> 
+        where T : struct,
+          IComparable,
+          IComparable<T>,
+          IEquatable<T>,
+          IFormattable
     {
         T Id { get; set; }
     }

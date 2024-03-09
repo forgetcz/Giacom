@@ -1,7 +1,7 @@
-﻿using Application.Interfaces;
-using ApplicationApplication.Interfaces;
+﻿using ApplicationApplication.Interfaces;
 using Domain.Entities;
 using Infrastructure.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
 using System.Globalization;
@@ -14,12 +14,12 @@ namespace Application.Services
     /// </summary>
     public class DataImportService : IDataImport
     {
-        private readonly IAppConfiguration _appConfiguration;
-        private readonly IBaseDbRepository<CrdData, long> _crdRepositories;
+        private readonly IConfiguration? _appConfig;
+        private readonly IBaseDbRepository<CrdData, long>? _crdRepositories;
 
-        public DataImportService(IAppConfiguration appConfiguration, IBaseDbRepository<CrdData, long> crdRepositories)
+        public DataImportService(IConfiguration? appConfig, IBaseDbRepository<CrdData, long>? crdRepositories)
         {
-            _appConfiguration = appConfiguration;
+            _appConfig = appConfig;
             _crdRepositories = crdRepositories;
         }
 
@@ -30,9 +30,6 @@ namespace Application.Services
         /// <returns></returns>
         public async Task ImportData(string filePath)
         {
-            var connString = _appConfiguration.ConnectionStringsRepository.GetKeyValue("mainConn");
-            _crdRepositories.setConnectionString(connString);
-
             using (TextFieldParser parser = new TextFieldParser(filePath))
             {
                 parser.TextFieldType = FieldType.Delimited;

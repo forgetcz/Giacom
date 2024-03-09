@@ -1,8 +1,7 @@
 using Application.Composition;
-using Application.Interfaces;
-using Application.Services;
 using GiacomImportData;
 using GiacomImportData.Application.Composition;
+using Infrastructure.Composition;
 
 internal class Program
 {
@@ -11,6 +10,7 @@ internal class Program
         IHost host = Host.CreateDefaultBuilder(args)
         .ConfigureServices(services =>
         {
+            services.AddInfrastructureServices();
             services.AddApplicationServices();
             services.AddImportDataServices();
             services.AddHostedService<Worker>();

@@ -1,9 +1,6 @@
-﻿using Application.Interfaces;
-using Application.Services;
-using Domain.Entities;
-using Infrastructure.Configuration.JSON;
-using Infrastructure.Data.MemoryRepository;
+﻿using Domain.Entities;
 using Infrastructure.Interfaces;
+using Infrastructure.Repository.EntityFramework.Mongo;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Composition
@@ -17,9 +14,6 @@ namespace Application.Composition
         /// <returns></returns>
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddSingleton<IAppConfiguration, AppConfigurationServices>();
-            services.AddSingleton<IConfigurationRepositoryJsonConfiguration, JsonlWebConfig>();
-            services.AddSingleton<IConfigurationRepositoryJsonAppKeys, ApplicationKeysJson>();
             services.AddSingleton<IBaseDbRepository<CrdData, long>, CrdDataRepository>();
             
             return services;
