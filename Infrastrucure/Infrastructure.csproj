@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Repository\SqlRepository\**" />
-    <EmbeddedResource Remove="Repository\SqlRepository\**" />
-    <None Remove="Repository\SqlRepository\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Business\NothingToDoRepository.cs" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 using Infrastructure.Interfaces;
 using System.Data.SqlClient;
 
-namespace Infrastructure.Data.SqlRepository
+namespace Infrastructure.Repository.SqlAdoNetRepository
 {
     public class CrdDataRepository : IBaseDbRepository<CrdData, long>
     {
@@ -130,6 +130,21 @@ namespace Infrastructure.Data.SqlRepository
                 result.Add(res);
             }
             return result;
+        }
+
+        public Task<IEnumerable<CrdData>> TakeRange(int skip, int count)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Delete(CrdData entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteMany(IEnumerable<CrdData> entities)
+        {
+            throw new NotImplementedException();
         }
     }
 }
