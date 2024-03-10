@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Infrastructure.Repository.SqlAdoNetRepository
 {
-    public class CrdDataRepository : IBaseDbRepository<CrdData, long>
+    public class CrdDataRepository : IBaseDbRepository<CrdData<long>, long>
     {
         public SqlConnection? _StoreContext;
 
@@ -19,7 +19,7 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 var reader = await cmd.ExecuteReaderAsync();
-                CrdData crdData;
+                CrdData<long> crdData;
                 while (reader.Read())
                 {
                     /*crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
@@ -39,25 +39,25 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             }
         }
 
-        public async Task<CrdData> Insert(CrdData entity)
+        public async Task<CrdData<long>> Insert(CrdData<long> entity)
         {
             using (SqlCommand cmd = new SqlCommand("Insert", _StoreContext))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 var reader = await cmd.ExecuteReaderAsync();
-                CrdData? crdData = null;
+                CrdData<long>? crdData = null;
                 while (reader.Read())
                 {
-                    crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
+                    crdData = new CrdData<long>(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
                         , reader.GetDateTime(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7), reader.GetString(8));
                 }
                 return crdData;
             }
         }
 
-        public async Task<IEnumerable<CrdData>> InsertMany(IEnumerable<CrdData> entities)
+        public async Task<IEnumerable<CrdData<long>>> InsertMany(IEnumerable<CrdData<long>> entities)
         {
-            List<CrdData> result = new List<CrdData>();
+            List<CrdData<long>> result = new List<CrdData<long>>();
             foreach (var entity in entities)
             {
                 var updatedEntity = await Insert(entity);
@@ -66,17 +66,17 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             return result;
         }
 
-        public async Task<IEnumerable<CrdData>> ReadAll()
+        public async Task<IEnumerable<CrdData<long>>> ReadAll()
         {
-            List<CrdData> resultData = new List<CrdData>();
+            List<CrdData<long>> resultData = new List<CrdData<long>>();
             using (SqlCommand cmd = new SqlCommand("ReadAll", _StoreContext))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 var reader = await cmd.ExecuteReaderAsync();
-                CrdData crdData = null;
+                CrdData<long> crdData = null;
                 while (reader.Read())
                 {
-                    crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
+                    crdData = new CrdData<long>(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
                         , reader.GetDateTime(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7), reader.GetString(8));
                     resultData.Add(crdData);
                 }
@@ -84,17 +84,17 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             }
         }
 
-        public async Task<CrdData> GetById(long id)
+        public async Task<CrdData<long>> GetById(long id)
         {
             using (SqlCommand cmd = new SqlCommand("getById", _StoreContext))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("id", id);
                 var reader = await cmd.ExecuteReaderAsync();
-                CrdData crdData = null;
+                CrdData<long> crdData = null;
                 while (reader.Read())
                 {
-                    crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
+                    crdData = new CrdData<long>(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
                         , reader.GetDateTime(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7), reader.GetString(8));
                     return crdData;
                 }
@@ -103,17 +103,17 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
 
         }
 
-        public async Task<CrdData> Update(CrdData entity)
+        public async Task<CrdData<long>> Update(CrdData<long> entity)
         {
             using (SqlCommand cmd = new SqlCommand("Update", _StoreContext))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("id", entity.Id);
                 var reader = await cmd.ExecuteReaderAsync();
-                CrdData crdData = null;
+                CrdData<long> crdData = null;
                 while (reader.Read())
                 {
-                    crdData = new CrdData(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
+                    crdData = new CrdData<long>(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
                         , reader.GetDateTime(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7), reader.GetString(8));
                     return crdData;
                 }
@@ -121,9 +121,9 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             }
         }
 
-        public async Task<IEnumerable<CrdData>> UpdateMany(IEnumerable<CrdData> entities)
+        public async Task<IEnumerable<CrdData<long>>> UpdateMany(IEnumerable<CrdData<long>> entities)
         {
-            List<CrdData> result = new List<CrdData>();
+            List<CrdData<long>> result = new List<CrdData<long>>();
             foreach (var entity in entities)
             {
                 var res = await Update(entity);
@@ -132,17 +132,17 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             return result;
         }
 
-        public Task<IEnumerable<CrdData>> TakeRange(int skip, int count)
+        public Task<IEnumerable<CrdData<long>>> TakeRange(int skip, int count)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(CrdData entity)
+        public Task Delete(CrdData<long> entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteMany(IEnumerable<CrdData> entities)
+        public Task DeleteMany(IEnumerable<CrdData<long>> entities)
         {
             throw new NotImplementedException();
         }

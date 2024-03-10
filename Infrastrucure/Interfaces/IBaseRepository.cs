@@ -12,10 +12,10 @@ namespace Infrastructure.Interfaces
     /// <typeparam name="K">Type of key in database</typeparam>
     public interface IBaseDbRepository<T, K> where T : IBaseEntity<K>
          where K : struct,
-          IComparable,
+          //IComparable,
           IComparable<K>,
-          IEquatable<K>,
-          IFormattable
+          IEquatable<K>
+          //IFormattable ObjectId
     {
         Task<T?> GetById(K id);
         Task<IEnumerable<T>> TakeRange(int skip, int count);

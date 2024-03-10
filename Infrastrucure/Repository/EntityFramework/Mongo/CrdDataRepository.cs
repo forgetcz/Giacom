@@ -5,23 +5,24 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
 using System.Configuration;
 using System.Diagnostics;
 
 namespace Infrastructure.Repository.EntityFramework.Mongo
 {
-    public class CrdDataRepository : IBaseDbRepository<CrdData, long>
+    public class CrdDataRepository : IBaseDbRepository<CrdData<ObjectId>, ObjectId>
     {
         private ILogger _logger { get; } = CreateLogger.GetLogger<CrdDataRepository>();
         
         private readonly IConfiguration? appConfig;
         private EntityFrameworkRepository Context { get; }
 
-        private DbSet<CrdData> CrdDataDb
+        private DbSet<CrdData<ObjectId>> CrdDataDb
         {
             get
             {
-                return Context.CrdData!;
+                return Context.CrdDatas!;
             }
         }
 
@@ -43,13 +44,13 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
             }*/
         }
 
-        public async Task Delete(CrdData entity)
+        public async Task Delete(CrdData<ObjectId> entity)
         {
             var r = CrdDataDb.Remove(entity);
             await Context.SaveChangesAsync();
         }
 
-        public async Task DeleteMany(IEnumerable<CrdData> entities)
+        public async Task DeleteMany(IEnumerable<CrdData<ObjectId>> entities)
         {
             foreach (var entity in entities)
             {
@@ -57,22 +58,22 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
             }
         }
 
-        public async Task<CrdData?> GetById(long id)
+        public async Task<CrdData<ObjectId>?> GetById(ObjectId id)
         {
-            var result = await CrdDataDb.FirstOrDefaultAsync(f => f.Id == id);
+            var result = await CrdDataDb.FirstOrDefaultAsync(f => f.Id.Equals(id));
             return result;
         }
 
-        public async Task<CrdData> Insert(CrdData entity)
+        public async Task<CrdData<ObjectId>> Insert(CrdData<ObjectId> entity)
         {
             await CrdDataDb.AddAsync(entity);
             await Context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<IEnumerable<CrdData>> InsertMany(IEnumerable<CrdData> entities)
+        public async Task<IEnumerable<CrdData<ObjectId>>> InsertMany(IEnumerable<CrdData<ObjectId>> entities)
         {
-            List<CrdData> result = new();
+            List<CrdData<ObjectId>> result = new();
             foreach (var entity in entities)
             {
                 var newItem = await Insert(entity);
@@ -81,13 +82,13 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
             return result;
         }
 
-        public async Task<IEnumerable<CrdData>> TakeRange(int skip, int count)
+        public async Task<IEnumerable<CrdData<ObjectId>>> TakeRange(int skip, int count)
         {
             var result = await CrdDataDb.Skip(skip).Take(count).ToListAsync();
             return result!;
         }
 
-        public async Task<CrdData> Update(CrdData entity)
+        public async Task<CrdData<ObjectId>> Update(CrdData<ObjectId> entity)
         {
             var result = await GetById(entity.Id);
             if (result != null)
@@ -101,9 +102,9 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
             return entity;
         }
 
-        public async Task<IEnumerable<CrdData>> UpdateMany(IEnumerable<CrdData> entities)
+        public async Task<IEnumerable<CrdData<ObjectId>>> UpdateMany(IEnumerable<CrdData<ObjectId>> entities)
         {
-            List<CrdData> result = new();
+            List<CrdData<ObjectId>> result = new();
             foreach (var entity in entities)
             {
                 var newItem = await Update(entity);

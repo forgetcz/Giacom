@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Infrastructure.Interfaces;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace Application.Interfaces
     /// </summary>
     public interface IDataService
     {
-        IBaseDbRepository<CrdData, long> GetCrdDataRepository();
+        IBaseDbRepository<CrdData<ObjectId>, ObjectId> GetCrdDataRepository();
     }
 }

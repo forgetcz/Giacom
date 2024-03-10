@@ -10,7 +10,8 @@ namespace Domain.Entities
     /// <summary>
     /// Crd data table
     /// </summary>
-    public class CrdData : BaseEntity<long>
+    public class CrdData<T> : BaseEntity<T> 
+        where T : struct, IComparable<T>, IEquatable<T>
     {
         public string caller_id { get; set; }
         public string recipient { get; set; }
@@ -21,7 +22,7 @@ namespace Domain.Entities
         public string reference { get; set; }
         public string currency { get; set; }
 
-        public CrdData(long id, string caller_id, string recipient, DateTime call_date, DateTime end_time,
+        public CrdData(T id, string caller_id, string recipient, DateTime call_date, DateTime end_time,
             int duration, decimal cost, string reference, string currency) : base(id)
         {
             this.caller_id = caller_id;

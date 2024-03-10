@@ -10,7 +10,7 @@ namespace Infrastructure.Repository.EntityFramework.SqlServer
     public partial class EntityFrameworkRepository : DbContext
     {
         private readonly IConfiguration? _appConfig;
-        public virtual DbSet<CrdData>? CrdData { get; set; }
+        public virtual DbSet<CrdData<long>>? CrdData { get; set; }
 
         public EntityFrameworkRepository(IConfiguration? appConfig)
         {

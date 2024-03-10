@@ -17,10 +17,10 @@ namespace Infrastructure.Business
     public class MemoryRepository<T, K> : IBaseDbRepository<T, K>
         where T : IBaseEntity<K>
         where K : struct,
-          IComparable,
+          //IComparable,
           IComparable<K>,
-          IEquatable<K>,
-          IFormattable
+          IEquatable<K>
+          //IFormattable
     {
         private readonly SortedList<K, T> storage = new();
 

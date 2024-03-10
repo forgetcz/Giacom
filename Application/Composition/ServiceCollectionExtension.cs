@@ -2,6 +2,7 @@
 using Infrastructure.Interfaces;
 using Infrastructure.Repository.EntityFramework.Mongo;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
 
 namespace Application.Composition
 {
@@ -14,7 +15,7 @@ namespace Application.Composition
         /// <returns></returns>
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddSingleton<IBaseDbRepository<CrdData, long>, CrdDataRepository>();
+            services.AddSingleton<IBaseDbRepository<CrdData<ObjectId>, ObjectId>, CrdDataRepository>();
             
             return services;
         }

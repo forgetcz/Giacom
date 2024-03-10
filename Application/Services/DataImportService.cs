@@ -3,6 +3,7 @@ using Domain.Entities;
 using Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic.FileIO;
+using MongoDB.Bson;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -15,9 +16,9 @@ namespace Application.Services
     public class DataImportService : IDataImport
     {
         private readonly IConfiguration? _appConfig;
-        private readonly IBaseDbRepository<CrdData, long>? _crdRepositories;
+        private readonly IBaseDbRepository<CrdData<ObjectId>, ObjectId>? _crdRepositories;
 
-        public DataImportService(IConfiguration? appConfig, IBaseDbRepository<CrdData, long>? crdRepositories)
+        public DataImportService(IConfiguration? appConfig, IBaseDbRepository<CrdData<ObjectId>, ObjectId>? crdRepositories)
         {
             _appConfig = appConfig;
             _crdRepositories = crdRepositories;
@@ -58,7 +59,7 @@ namespace Application.Services
                         var reference = Convert.ToString(fields[6]);
                         var currency = Convert.ToString(fields[7]);
 
-                        CrdData crdData = new CrdData(counter, caller_id, recipient, call_date, end_time, duration, cost, reference, currency);
+                        CrdData<ObjectId> crdData = new CrdData<ObjectId>(new ObjectId(), caller_id, recipient, call_date, end_time, duration, cost, reference, currency);
                         await _crdRepositories.Insert(crdData);
                     }
                 }

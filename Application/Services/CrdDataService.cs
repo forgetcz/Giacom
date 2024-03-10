@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
+using MongoDB.Bson;
 
 namespace Application.Services
 {
@@ -12,9 +13,9 @@ namespace Application.Services
     public class CrdDataService : IDataService
     {
         private readonly IConfiguration? _appConfig;
-        private readonly IBaseDbRepository<CrdData, long>? _crdRepositories;
+        private readonly IBaseDbRepository<CrdData<ObjectId>, ObjectId>? _crdRepositories;
 
-        public IBaseDbRepository<CrdData, long> GetCrdDataRepository()
+        public IBaseDbRepository<CrdData<ObjectId>, ObjectId> GetCrdDataRepository()
         {
             //var mainConnectionString = _appConfig!.GetConnectionString(nameof(eSqlConnectionStrings.sqlConnString));
             //_crdRepositories!.setConnectionString(mainConnectionString!);
@@ -22,7 +23,7 @@ namespace Application.Services
             return _crdRepositories!;
         }
 
-        public CrdDataService(IConfiguration? appConfig, IBaseDbRepository<CrdData, long>? cdrRepositories)
+        public CrdDataService(IConfiguration? appConfig, IBaseDbRepository<CrdData<ObjectId>, ObjectId>? cdrRepositories)
         {
             _appConfig = appConfig;
             _crdRepositories = cdrRepositories;

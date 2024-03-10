@@ -4,7 +4,9 @@ using Infrastructure.Business;
 namespace Infrastructure.Repository.MemoryRepository
 {
 
-    public class CrdDataRepository : MemoryRepository<CrdData, long>
+    public class CrdDataRepository<T> : MemoryRepository<CrdData<T>, T> where T : struct,
+          IComparable<T>,
+          IEquatable<T>
     {
 
     }

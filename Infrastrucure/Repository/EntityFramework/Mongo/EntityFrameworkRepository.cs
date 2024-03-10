@@ -5,6 +5,7 @@ using Infrastructure.Enums;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Diagnostics;
 using static System.Collections.Specialized.BitVector32;
@@ -18,8 +19,8 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
     {
         private readonly IConfiguration? _appConfig;
         private static readonly IMongoDatabase? _database;
-        private static DbContextOptions<EntityFrameworkRepository> dbContextOptionsBuilder { get; set; }
-        public virtual DbSet<CrdData>? CrdData { get; set; }
+        private static DbContextOptions<EntityFrameworkRepository> DbContextOptionsBuilder { get; set; }
+        public virtual DbSet<CrdData<ObjectId>>? CrdDatas { get; set; }
 
         /// <summary>
         /// This is a hack how to create dbContextOptionsBuilder before initial constructor is created. We used it for base constructor latter.
@@ -28,13 +29,13 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile(AppDomain.CurrentDomain.BaseDirectory +
-                    eConfigurationFile.json.ToDescriptionString(), optional: true)
+                    eConfigurationFile.json.ToDescriptionString(), optional: true, reloadOnChange: true)
                 .Build();
             var mongoConnection = configuration.GetSection("mongoConnection");
             var client = new MongoClient(mongoConnection.GetSection("ConnectionString").Value);
             _database = client.GetDatabase(mongoConnection.GetSection("DatabaseName").Value);
 
-            dbContextOptionsBuilder = new DbContextOptionsBuilder<EntityFrameworkRepository>()
+            DbContextOptionsBuilder = new DbContextOptionsBuilder<EntityFrameworkRepository>()
                 .UseMongoDB(_database.Client, _database.DatabaseNamespace.DatabaseName)
                 .Options;
 
@@ -52,7 +53,7 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
             //EntityFrameworkRepository(db);
         }
 
-        public EntityFrameworkRepository(DbContextOptions options) : base(dbContextOptionsBuilder) { }
+        public EntityFrameworkRepository(DbContextOptions options) : base(DbContextOptionsBuilder) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -11,7 +11,7 @@ namespace Infrastructure.Repository.EntityFramework.InMemory
     {
         private readonly IConfiguration? appConfig;
 
-        public virtual DbSet<CrdData>? CrdData { get; set; }
+        public virtual DbSet<CrdData<long>>? CrdData { get; set; }
 
         public EntityFrameworkRepository(IConfiguration? config) 
         {

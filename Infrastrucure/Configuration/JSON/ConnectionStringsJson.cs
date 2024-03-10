@@ -29,7 +29,8 @@ namespace Infrastructure.Configuration.JSON
         /// <returns></returns>
         public JsonlWebConfig()
         {
-            var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json"
+                , optional: true, reloadOnChange: true).Build();
             var connectionStrings = configuration.GetSection("connectionStrings");
 
             foreach (var item in connectionStrings.GetChildren())

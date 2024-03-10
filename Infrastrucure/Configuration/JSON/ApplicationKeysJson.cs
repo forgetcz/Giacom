@@ -29,7 +29,8 @@ namespace Infrastructure.Configuration.JSON
         /// <returns></returns>
         public ApplicationKeysJson()
         {
-            var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json", optional: true).Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile(AppDomain.CurrentDomain.BaseDirectory + "appsettings.json"
+                , optional: true, reloadOnChange: true).Build();
             var appSettings = configuration.GetSection("appSettings");
 
             foreach (var item in appSettings.GetChildren())
