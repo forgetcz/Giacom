@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic.FileIO;
 using MongoDB.Bson;
 using System.Diagnostics;
@@ -15,11 +16,13 @@ namespace Application.Services
     /// </summary>
     public class DataImportService : IDataImport
     {
+        private readonly ILogger<DataImportService> _logger;
         private readonly IConfiguration? _appConfig;
         private readonly IBaseDbRepository<CrdData<ObjectId>, ObjectId>? _crdRepositories;
 
-        public DataImportService(IConfiguration? appConfig, IBaseDbRepository<CrdData<ObjectId>, ObjectId>? crdRepositories)
+        public DataImportService(ILogger<DataImportService> logger, IConfiguration? appConfig, IBaseDbRepository<CrdData<ObjectId>, ObjectId>? crdRepositories)
         {
+            this._logger = logger;
             _appConfig = appConfig;
             _crdRepositories = crdRepositories;
         }
@@ -59,8 +62,9 @@ namespace Application.Services
                         var reference = Convert.ToString(fields[6]);
                         var currency = Convert.ToString(fields[7]);
 
-                        CrdData<ObjectId> crdData = new CrdData<ObjectId>(new ObjectId(), caller_id, recipient, call_date, end_time, duration, cost, reference, currency);
-                        await _crdRepositories.Insert(crdData);
+                        CrdData<ObjectId> crdData = new CrdData<ObjectId>(ObjectId.GenerateNewId(), caller_id, recipient, call_date, end_time, duration, cost, reference, currency);
+                        _logger.LogDebug(counter.ToString());
+                        await _crdRepositories!.Insert(crdData);
                     }
                 }
             }

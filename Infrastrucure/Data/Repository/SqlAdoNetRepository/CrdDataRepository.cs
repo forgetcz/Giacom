@@ -2,7 +2,7 @@
 using Infrastructure.Interfaces;
 using System.Data.SqlClient;
 
-namespace Infrastructure.Repository.SqlAdoNetRepository
+namespace Infrastructure.Data.Repository.SqlAdoNetRepository
 {
     public class CrdDataRepository : IBaseDbRepository<CrdData<long>, long>
     {
@@ -84,14 +84,14 @@ namespace Infrastructure.Repository.SqlAdoNetRepository
             }
         }
 
-        public async Task<CrdData<long>> GetById(long id)
+        public async Task<CrdData<long>?> GetById(long id)
         {
             using (SqlCommand cmd = new SqlCommand("getById", _StoreContext))
             {
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("id", id);
                 var reader = await cmd.ExecuteReaderAsync();
-                CrdData<long> crdData = null;
+                CrdData<long>? crdData = null;
                 while (reader.Read())
                 {
                     crdData = new CrdData<long>(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)

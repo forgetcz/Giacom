@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Repository.EntityFramework.SqlServer
+namespace Infrastructure.Data.Repository.EntityFramework.SqlServer
 {
     /// <summary>
     /// Crd data repository

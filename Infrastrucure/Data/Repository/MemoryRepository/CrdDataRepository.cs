@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Infrastructure.Business;
 
-namespace Infrastructure.Repository.MemoryRepository
+namespace Infrastructure.Data.Repository.MemoryRepository
 {
 
     public class CrdDataRepository<T> : MemoryRepository<CrdData<T>, T> where T : struct,

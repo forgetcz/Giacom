@@ -1,14 +1,21 @@
 ﻿using Domain.Entities;
+using Infrastructure.Business;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System.Configuration;
 using System.Diagnostics;
 
-namespace Infrastructure.Repository.EntityFramework.InMemory
+namespace Infrastructure.Data.Repository.EntityFramework.SqlServer
 {
     public class CrdDataRepository : IBaseDbRepository<CrdData<long>, long>
     {
-        private EntityFrameworkRepository Context { get; } = new EntityFrameworkRepository(null);
+        private ILogger _logger { get; } = CreateLogger.GetLogger<CrdDataRepository>();
+
+        private readonly IConfiguration? appConfig;
+        private EntityFrameworkRepository Context { get; }
 
         private DbSet<CrdData<long>> CrdDataDb
         {
@@ -20,13 +27,19 @@ namespace Infrastructure.Repository.EntityFramework.InMemory
 
         public CrdDataRepository(IConfiguration? appConfig)
         {
-            for (int x = 1; x < 11; x++)
+            Context = new EntityFrameworkRepository(appConfig);
+            int count = CrdDataDb.Count();
+
+            if (count == 0)
             {
-                var data = new CrdData<long>(x, x.ToString(), x.ToString(), DateTime.Now, DateTime.Now, x, x, "", "");
-                var newData = CrdDataDb.Add(data);
-                Debug.WriteLine(newData);
+                for (int x = 1; x < 11; x++)
+                {
+                    var data = new CrdData<long>(x, x.ToString(), x.ToString(), DateTime.Now, DateTime.Now, x, x, "", "");
+                    var newData = CrdDataDb.Add(data);
+                    Debug.WriteLine(newData);
+                }
+                Context.SaveChanges();
             }
-            Context.SaveChanges();
         }
 
         public async Task Delete(CrdData<long> entity)

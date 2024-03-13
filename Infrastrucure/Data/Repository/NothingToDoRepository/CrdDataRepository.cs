@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Infrastructure.Interfaces;
 
-namespace Infrastructure.Repository.NothingToDoRepository
+namespace Infrastructure.Data.Repository.NothingToDoRepository
 {
 
     public class CrdDataRepository : IBaseDbRepository<CrdData<long>, long>

@@ -10,7 +10,7 @@ using MongoDB.Driver;
 using System.Diagnostics;
 using static System.Collections.Specialized.BitVector32;
 
-namespace Infrastructure.Repository.EntityFramework.Mongo
+namespace Infrastructure.Data.Repository.EntityFramework.Mongo
 {
     /// <summary>
     /// Crd data repository

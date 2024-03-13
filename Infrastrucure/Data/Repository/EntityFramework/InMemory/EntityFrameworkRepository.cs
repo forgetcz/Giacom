@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Repository.EntityFramework.InMemory
+namespace Infrastructure.Data.Repository.EntityFramework.InMemory
 {
     /// <summary>
     /// Crd data repository
@@ -13,7 +13,7 @@ namespace Infrastructure.Repository.EntityFramework.InMemory
 
         public virtual DbSet<CrdData<long>>? CrdData { get; set; }
 
-        public EntityFrameworkRepository(IConfiguration? config) 
+        public EntityFrameworkRepository(IConfiguration? config)
         {
             appConfig = config;
         }
@@ -22,6 +22,6 @@ namespace Infrastructure.Repository.EntityFramework.InMemory
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "ApplicationDb");
         }
-        
+
     }
 }

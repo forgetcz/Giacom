@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
+using Infrastructure.Data.Repository.EntityFramework.Mongo;
 using Infrastructure.Interfaces;
-using Infrastructure.Repository.EntityFramework.Mongo;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 

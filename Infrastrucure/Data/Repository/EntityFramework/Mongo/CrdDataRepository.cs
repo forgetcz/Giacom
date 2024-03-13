@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Infrastructure.Business;
 using Infrastructure.Interfaces;
+using log4net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,12 +10,14 @@ using MongoDB.Bson;
 using System.Configuration;
 using System.Diagnostics;
 
-namespace Infrastructure.Repository.EntityFramework.Mongo
+namespace Infrastructure.Data.Repository.EntityFramework.Mongo
 {
     public class CrdDataRepository : IBaseDbRepository<CrdData<ObjectId>, ObjectId>
     {
-        private ILogger _logger { get; } = CreateLogger.GetLogger<CrdDataRepository>();
-        
+        private ILogger<CrdDataRepository> _logger;
+        private readonly ILog? _logger4Net;
+        //private ILogger _logger { get; } = CreateLogger.GetLogger<CrdDataRepository>();
+
         private readonly IConfiguration? appConfig;
         private EntityFrameworkRepository Context { get; }
 
@@ -28,11 +31,16 @@ namespace Infrastructure.Repository.EntityFramework.Mongo
 
         public CrdDataRepository(IConfiguration? appConfig)
         {
+            //_logger = logger;
+            //_logger4Net = logger4Net;
             Context = new EntityFrameworkRepository(appConfig);
-            int count = CrdDataDb.Count();
-            _logger.LogError(count.ToString());
 
-            /*if (count == 0) 
+            /*
+             *             int count = CrdDataDb.Count();
+            _logger4Net.Debug(count.ToString());
+
+             * 
+             * if (count == 0) 
             {
                 for (int x = 1; x < 11; x++)
                 {
